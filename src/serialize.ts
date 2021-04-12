@@ -44,7 +44,7 @@ export default function serialize(
   if (type !== 'object') {
     throw new TypeError(`Unexpected type '${type}' encountered while attempting to serialize`)
   }
-  if (Array.isArray(item) || item.constructor.name === 'Object') {
+  if (Array.isArray(item) || (typeof item === 'object' && item !== null)) {
     return `a:${serializeObject(item, scope)}`
   }
 
